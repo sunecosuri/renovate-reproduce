@@ -1,0 +1,26 @@
+name: Renovate
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * 1-5'
+  push:
+    branches:
+      - 'main'
+      - 'patch-renovate-*'
+env:
+  LOG_LEVEL: debug
+  RENOVATE_CONFIG_FILE: renovate.json5
+  RENOVATE_REPOSITORIES: ${{ github.repository }}
+  RENOVATE_USERNAME: "renovate[bot]"
+  RENOVATE_GIT_AUTHOR: "Renovate Bot <renovate@whitesourcesoftware.com>"
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@v34.82.0
+        with:
+          token: ${{ secrets.RENOVATE_TOKEN }}
+
