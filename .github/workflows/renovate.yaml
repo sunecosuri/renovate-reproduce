@@ -11,7 +11,6 @@ env:
   LOG_LEVEL: debug
   RENOVATE_CONFIG_FILE: renovate.json5
   RENOVATE_REPOSITORIES: ${{ github.repository }}
-  RENOVATE_USERNAME: "renovate[bot]"
   RENOVATE_GIT_AUTHOR: "Renovate Bot <renovate@whitesourcesoftware.com>"
 jobs:
   renovate:
