@@ -1,0 +1,26 @@
+name: add version tag
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+jobs:
+  release:
+    name: add tag
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Set current datetime as env variable
+        env:
+          TZ: 'Asia/Tokyo' # タイムゾーン指定
+        run: echo "CURRENT_DATETIME=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          dry_run: true
+          custom_tag: ${{ env.CURRENT_DATETIME }}_PR#${{ github.event.pull_request.number }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
