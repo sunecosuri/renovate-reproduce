@@ -7,15 +7,6 @@
     "renovate"
   ],
   "prConcurrentLimit": 10,
-  "major": {
-    "stabilityDays": 7
-  },
-  "minor": {
-    "stabilityDays": 3
-  },
-  "patch": {
-    "stabilityDays": 2
-  },
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": [
