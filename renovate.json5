@@ -3,10 +3,6 @@
   "extends": [
     "github>sunecosuri/renovate-config"
   ],
-  "labels": [
-    "renovate"
-  ],
-  "prConcurrentLimit": 10,
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": [
@@ -14,17 +10,5 @@
       "Security"
     ],
     "stabilityDays": 0
-  },
-  "packageRules": [
-    {
-      "matchDepTypes": [
-        "devDependencies"
-      ],
-      "labels": [
-        "renovate",
-        "devDependencies"
-      ],
-      "groupName": "Update devDependencies"
-    }
-  ]
+  }
 }
